@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #blog-list {
+            margin-top: 20px;
+        }
+        .blog-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .blog-item img {
+            max-width: 200px;
+            display: block;
+        }
+        .blog-item h3 {
+            color: blue;
+        }
+        button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Your Blog</h1>
+    <p>Total Blogs: <span id="total-blogs">0</span></p>
+
+    <!-- Form to add a new blog -->
+    <div>
+        <input type="text" id="https://www.hubspot.com/hs-fs/hubfs/parts-url_1.webp?width=595&height=400&name=parts-url_1.webp" placeholder="Image URL"><br><br>
+        <input type="text" id="title" placeholder="Title"><br><br>
+        <input type="text" id="description" placeholder="Blog Description"><br><br>
+        <button onclick="addBlog()">Post Blog</button>
+    </div>
+
+    <div id="blog-list"></div>
+
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- JavaScript for handling blogs -->
+    <script>
+        const apiUrl = 'https://crudcrud.com/api/0b0dffab1e5f445884768666a657818b';
+
+        // Function to fetch blogs
+        function fetchBlogs() {
+            axios.get(apiUrl)
+                .then(response => {
+                    const blogs = response.data;
+                    console.log('Blogs fetched:', blogs);
+                    document.getElementById('total-blogs').innerText = blogs.length;
+                    displayBlogs(blogs);
+                })
+                .catch(error => {
+                    console.error('Error fetching blogs:', error);
+                });
+        }
+
+        // Function to display blogs
+        function displayBlogs(blogs) {
+            const blogList = document.getElementById('blog-list');
+            blogList.innerHTML = ''; // Clear the blog list
+
+            blogs.forEach(blog => {
+                const blogItem = document.createElement('div');
+                blogItem.classList.add('blog-item');
+                blogItem.innerHTML = `
+                    <h3>${blog.title}</h3>
+                    <img src="${blog.imageUrl}" alt="${blog.title}">
+                    <p>${blog.description}</p>
+                    <button onclick="editBlog('${blog._id}')">Edit Blog</button>
+                    <button onclick="deleteBlog('${blog._id}')">Delete Blog</button>
+                `;
+                blogList.appendChild(blogItem);
+            });
+        }
+
+        // Function to add a new blog
+        function addBlog() {
+            const imageUrl = document.getElementById('imageUrl').value;
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+
+            const newBlog = {
+                imageUrl,
+                title,
+                description
+            };
+
+            axios.post(apiUrl, newBlog)
+                .then(response => {
+                    console.log('Blog added:', response.data);
+                    fetchBlogs(); // Reload blogs after adding
+                })
+                .catch(error => {
+                    console.error('Error adding blog:', error);
+                });
+        }
+
+        // Function to delete a blog
+        function deleteBlog(blogId) {
+            axios.delete(`${apiUrl}/${blogId}`)
+                .then(() => {
+                    console.log('Blog deleted:', blogId);
+                    fetchBlogs(); // Reload blogs after deleting
+                })
+                .catch(error => {
+                    console.error('Error deleting blog:', error);
+                });
+        }
+
+        // Placeholder function for editing a blog (you can customize this)
+        function editBlog(blogId) {
+            console.log('Edit blog:', blogId);
+            // Implement the logic for editing a blog here
+        }
+
+        // Fetch blogs on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchBlogs();
+        });
+    </script>
+
+</body>
+</html>
+
+        
