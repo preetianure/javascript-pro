@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Manager</title>
+    <link rel="stylesheet" href="./blog.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Your Blog Manager</h1>
+      </header>
+
+      <div class="blog-form-container">
+        <!-- Form for adding a new blog -->
+        <h2>Post Your Blog</h2>
+        <form id="blog-form">
+          <div class="form-group">
+            <label for="image-url">Image URL:</label>
+            <input type="text" id="image-url" placeholder="Enter image URL" />
+          </div>
+
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" placeholder="Enter blog title" />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Blog Description:</label>
+            <textarea
+              id="description"
+              placeholder="Enter blog description"
+            ></textarea>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn">POST BLOG</button>
+        </form>
+      </div>
+
+      <div id="blog-list" class="blog-list">
+        <!-- Blogs will be dynamically inserted here -->
+      </div>
+
+      <footer>
+        <p>Total Blog: <span id="blog-count">0</span></p>
+      </footer>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+      integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="blog.js"></script>
+  </body>
+</html>
