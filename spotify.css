@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #121212; /* Dark background for the body */
+    color: white; /* Default text color */
+}
+
+header {
+    background: #1DB954;
+    color: white;
+    padding: 20px 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+h1 {
+    float: left;
+}
+
+.logo {
+    width: 150px; /* Adjust logo size as needed */
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    background: url('https://png.pngtree.com/thumb_back/fh260/background/20230630/pngtree-spotify-icon-in-3d-with-background-and-extra-space-for-copy-image_3691631.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    height: 100vh; /* Make the hero section full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Add a dark overlay to the hero content */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.features, .download, .login {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #333; /* Dark background for the sections */
+    color: white;
+}
+
+.feature {
+    margin: 20px 0 ;
+}
+
+.feature img {
+    width: 150px; /* Adjust image size as needed */
+    margin: 20px;
+    border-radius: 10px;
+}
+
+button {
+    background: #1DB954;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #1aa34a;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
