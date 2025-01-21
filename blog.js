@@ -1,4 +1,4 @@
-const apiUrl = "https://crudcrud.com/api/214bfefb32cc4c969c8388db0cd44ba8/blogs";
+const apiUrl = "https://caa044d3e3ae1b759359.free.beeceptor.com/api/users/";
 
 fetchBlogs();
 
